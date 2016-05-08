@@ -13,6 +13,7 @@ import Vista.Frame.Administrar.FRM_Cursos;
 import Vista.Frame.Administrar.FRM_Estudiantes;
 import Vista.Frame.Chequear.FRM_VerMatriculas;
 import Vista.Frame.Administrar.FRM_Matriculas;
+import Vista.Frame.Administrar.FRM_Usuarios;
 import Vista.Frame.Chequear.FRM_VerCursos;
 import Vista.Frame.Chequear.FRM_VerEstudiantes;
 import Vista.Frame.FRM_MenuPrincipal;
@@ -32,6 +33,7 @@ public class CNTRL_MenuPrincipal implements ActionListener
     FRM_VerCursos verCursos;
     FRM_Matriculas matriculas;
     FRM_VerMatriculas verMatriculas;
+    FRM_Usuarios usuarios;
     
     /**
      * Crea el controlador del Menú Principal
@@ -61,6 +63,8 @@ public class CNTRL_MenuPrincipal implements ActionListener
         matriculas.setLocationRelativeTo(null);
         verMatriculas = new FRM_VerMatriculas(baseDatos);
         verMatriculas.setLocationRelativeTo(null);
+        usuarios = new FRM_Usuarios(baseDatos);
+        usuarios.setLocationRelativeTo(null);
     }
     
     @Override
@@ -107,6 +111,11 @@ public class CNTRL_MenuPrincipal implements ActionListener
             verMatriculas.updateTabla();
             verMatriculas.setVisible(true);
             System.out.println("Ver Matrículas");            
+        }
+        
+        if(e.getActionCommand().equals("AdministrarUsuarios"))
+        {
+            usuarios.setVisible(true);
         }
         
         if(e.getActionCommand().equals("Salir"))

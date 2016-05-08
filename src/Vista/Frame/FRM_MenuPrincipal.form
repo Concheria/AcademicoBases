@@ -73,6 +73,19 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jmn_Usuarios">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Usuarios"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmi_AdministrarUsuarios">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Administrar"/>
+                <Property name="actionCommand" type="java.lang.String" value="AdministrarUsuarios"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>

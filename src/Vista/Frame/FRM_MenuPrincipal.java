@@ -42,6 +42,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame
         jmi_VerCursos.addActionListener(controlador);
         jmi_Matriculas.addActionListener(controlador);
         jmi_VerMatriculas.addActionListener(controlador);
+        jmi_AdministrarUsuarios.addActionListener(controlador);
     }
 
     /**
@@ -65,6 +66,8 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame
         jmi_VerEstudiantes = new javax.swing.JMenuItem();
         jmi_VerCursos = new javax.swing.JMenuItem();
         jmi_VerMatriculas = new javax.swing.JMenuItem();
+        jmn_Usuarios = new javax.swing.JMenu();
+        jmi_AdministrarUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Administrador Académico");
@@ -123,6 +126,14 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame
         jmn_Ver.add(jmi_VerMatriculas);
 
         jMenuBar1.add(jmn_Ver);
+
+        jmn_Usuarios.setText("Usuarios");
+
+        jmi_AdministrarUsuarios.setText("Administrar");
+        jmi_AdministrarUsuarios.setActionCommand("AdministrarUsuarios");
+        jmn_Usuarios.add(jmi_AdministrarUsuarios);
+
+        jMenuBar1.add(jmn_Usuarios);
 
         setJMenuBar(jMenuBar1);
 
@@ -199,6 +210,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel jl_Fondo;
+    private javax.swing.JMenuItem jmi_AdministrarUsuarios;
     private javax.swing.JMenuItem jmi_Cursos;
     private javax.swing.JMenuItem jmi_Estudiantes;
     private javax.swing.JMenuItem jmi_Matriculas;
@@ -208,6 +220,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame
     private javax.swing.JMenuItem jmi_VerMatriculas;
     private javax.swing.JMenu jmn_Administrar;
     private javax.swing.JMenu jmn_Archivo;
+    private javax.swing.JMenu jmn_Usuarios;
     private javax.swing.JMenu jmn_Ver;
     // End of variables declaration//GEN-END:variables
 }

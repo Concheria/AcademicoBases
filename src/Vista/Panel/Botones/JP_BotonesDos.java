@@ -14,12 +14,12 @@ import Controlador.CNTRL_Matriculas;
  *
  * @author Daniel
  */
-public class JP_BotonesMatricula extends javax.swing.JPanel {
+public class JP_BotonesDos extends javax.swing.JPanel {
 
     /**
      * Creates new form JP_BotonesMatricula
      */
-    public JP_BotonesMatricula() 
+    public JP_BotonesDos() 
     {
         initComponents();
     }

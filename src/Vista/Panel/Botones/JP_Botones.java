@@ -10,6 +10,7 @@ package Vista.Panel.Botones;
 
 import Controlador.CNTRL_Cursos;
 import Controlador.CNTRL_Estudiantes;
+import Controlador.CNTRL_Usuarios;
 
 /**
  *
@@ -41,6 +42,18 @@ public class JP_Botones extends javax.swing.JPanel {
      * @param controlador
      */
     public void addController(CNTRL_Cursos controlador)
+    {        
+        jbtn_Agregar.addActionListener(controlador);
+        jbtn_Modificar.addActionListener(controlador);
+        jbtn_Eliminar.addActionListener(controlador);
+    }
+    
+    /**
+     * Añade el controlador de Usuario a los Botones
+     * (Sobrecarga de método)
+     * @param controlador
+     */
+    public void addController(CNTRL_Usuarios controlador)
     {        
         jbtn_Agregar.addActionListener(controlador);
         jbtn_Modificar.addActionListener(controlador);

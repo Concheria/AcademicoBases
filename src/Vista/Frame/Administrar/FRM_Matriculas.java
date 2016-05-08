@@ -279,7 +279,7 @@ public class FRM_Matriculas extends javax.swing.JFrame {
         jl_Curso = new javax.swing.JLabel();
         jp_InfoEstudiante = new Vista.Panel.Info.JP_InfoEstudiante();
         jp_InfoCurso = new Vista.Panel.Info.JP_InfoCurso();
-        jp_Botones = new Vista.Panel.Botones.JP_BotonesMatricula();
+        jp_Botones = new Vista.Panel.Botones.JP_BotonesDos();
         jbtn_Reiniciar = new javax.swing.JButton();
 
         setTitle("Administrar Matrículas");
@@ -364,7 +364,7 @@ public class FRM_Matriculas extends javax.swing.JFrame {
     private javax.swing.JButton jbtn_Reiniciar;
     private javax.swing.JLabel jl_Curso;
     private javax.swing.JLabel jl_Estudiante;
-    private Vista.Panel.Botones.JP_BotonesMatricula jp_Botones;
+    private Vista.Panel.Botones.JP_BotonesDos jp_Botones;
     private Vista.Panel.Info.JP_InfoCurso jp_InfoCurso;
     private Vista.Panel.Info.JP_InfoEstudiante jp_InfoEstudiante;
     // End of variables declaration//GEN-END:variables

@@ -17,7 +17,8 @@ public class JP_InfoUsuario extends javax.swing.JPanel {
     /**
      * Creates new form JP_InfoUsuario
      */
-    public JP_InfoUsuario() {
+    public JP_InfoUsuario() 
+    {
         initComponents();
     }
 
@@ -30,19 +31,68 @@ public class JP_InfoUsuario extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jl_Nombre = new javax.swing.JLabel();
+        jl_User = new javax.swing.JLabel();
+        jl_Pass = new javax.swing.JLabel();
+        jpf_Pass = new javax.swing.JPasswordField();
+        jtf_User = new javax.swing.JTextField();
+        jtf_Nombre = new javax.swing.JTextField();
+
+        jl_Nombre.setText("Nombre");
+        jl_Nombre.setToolTipText("Nombre Real");
+
+        jl_User.setText("Usuario");
+        jl_User.setToolTipText("Nombre de Usuario");
+
+        jl_Pass.setText("Contraseña");
+        jl_Pass.setToolTipText("Contrseña");
+
+        jpf_Pass.setToolTipText("Contraseña");
+
+        jtf_User.setToolTipText("Nombre de Usuario");
+
+        jtf_Nombre.setToolTipText("Nombre Real");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_Pass)
+                    .addComponent(jl_Nombre)
+                    .addComponent(jl_User))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtf_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                    .addComponent(jpf_Pass)
+                    .addComponent(jtf_User))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_User)
+                    .addComponent(jtf_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Nombre)
+                    .addComponent(jtf_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_Pass)
+                    .addComponent(jpf_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jl_Nombre;
+    private javax.swing.JLabel jl_Pass;
+    private javax.swing.JLabel jl_User;
+    private javax.swing.JPasswordField jpf_Pass;
+    private javax.swing.JTextField jtf_Nombre;
+    private javax.swing.JTextField jtf_User;
     // End of variables declaration//GEN-END:variables
 }
