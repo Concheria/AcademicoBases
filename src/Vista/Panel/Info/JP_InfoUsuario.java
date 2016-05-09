@@ -8,11 +8,16 @@
  */
 package Vista.Panel.Info;
 
+import Controlador.CNTRL_Usuarios;
+import Vista.Frame.Administrar.FRM_Usuarios;
+
 /**
  *
  * @author DanielSQ
  */
 public class JP_InfoUsuario extends javax.swing.JPanel {
+    CNTRL_Usuarios controlador;
+    FRM_Usuarios frame;
 
     /**
      * Creates new form JP_InfoUsuario
@@ -20,6 +25,68 @@ public class JP_InfoUsuario extends javax.swing.JPanel {
     public JP_InfoUsuario() 
     {
         initComponents();
+    }
+    
+    /**
+     * Añade los controladores a los usuarios
+     * @param controlador
+     * @param frame
+     */
+    public void addController(CNTRL_Usuarios controlador,FRM_Usuarios frame)
+    {        
+        this.controlador = controlador;
+        this.frame = frame;
+    }
+    
+    /**
+     * Devuelve el Usuario
+     * @return
+     */
+    public String getUser()
+    {
+        return jtf_User.getText();
+    }
+    
+    /**
+     * Devuelve toda la información del usuario escrita en el frame
+     * @return
+     */
+    public String[] getInfo()
+    {
+        String[] info = new String[3];
+        
+        info[0] = jtf_User.getText();
+        info[1] = jtf_Nombre.getText();
+        info[2] = jpf_Pass.getText();
+        
+        return info;
+    }
+    
+    /**
+     * Llena los campos de texto con la información del Usuario
+     * @param nombre
+     */
+    public void fillField(String nombre)
+    {
+        jtf_Nombre.setText(nombre);
+    }
+    
+    /**
+     * Limpia los campos de texto
+     */
+    public void clearFields()
+    {
+        jtf_User.setText("");
+        jtf_Nombre.setText("");
+        jpf_Pass.setText("");
+    }
+    
+    /**
+     * Limpia el campo de Nombre
+     */
+    public void clearField()
+    {
+        jtf_Nombre.setText("");
     }
 
     /**
@@ -48,8 +115,18 @@ public class JP_InfoUsuario extends javax.swing.JPanel {
         jl_Pass.setToolTipText("Contrseña");
 
         jpf_Pass.setToolTipText("Contraseña");
+        jpf_Pass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jpf_PassKeyPressed(evt);
+            }
+        });
 
         jtf_User.setToolTipText("Nombre de Usuario");
+        jtf_User.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jtf_UserKeyReleased(evt);
+            }
+        });
 
         jtf_Nombre.setToolTipText("Nombre Real");
 
@@ -85,6 +162,28 @@ public class JP_InfoUsuario extends javax.swing.JPanel {
                     .addComponent(jpf_Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jtf_UserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_UserKeyReleased
+         if(jtf_User.getText().equals(""))
+        {
+            frame.nadaConf();
+        }
+        else
+        {
+            controlador.buscar();
+        }
+    }//GEN-LAST:event_jtf_UserKeyReleased
+
+    private void jpf_PassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpf_PassKeyPressed
+        if(evt.getKeyCode()==10)
+        {
+            
+            if(frame.agregarOpen == true)
+            {
+                controlador.agregar();
+            }
+        }
+    }//GEN-LAST:event_jpf_PassKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

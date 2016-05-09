@@ -17,12 +17,95 @@ import Modelo.Database.ConexionBD;
  */
 public class FRM_Usuarios extends javax.swing.JFrame {
     CNTRL_Usuarios controlador;
+    public boolean agregarOpen = false;
+    
     /**
      * Creates new form FRM_Usuarios
+     * @param baseDatos
      */
     public FRM_Usuarios(ConexionBD baseDatos) {
         controlador = new CNTRL_Usuarios(this, baseDatos);
-        initComponents();
+        initComponents();        
+        addController(controlador);
+        nadaConf();
+    }
+    
+        /**
+     * Añade el controlador a los botones del frame
+     * @param controlador
+     */
+    public void addController(CNTRL_Usuarios controlador)
+    {
+       jp_InfoUsuario.addController(controlador, this);
+       jp_Botones.addController(controlador);
+    }
+    
+    /**
+     * Devuelve el nombre de usuario
+     * @return
+     */
+    public String getUser()
+    {
+        return jp_InfoUsuario.getUser();
+    }
+    
+    /**
+     * Llena el campo de nombre con el nombre del usuario
+     * @param nombre
+     */
+    public void fillField(String nombre)
+    {
+        jp_InfoUsuario.fillField(nombre);
+    }
+    
+    public void clearPartialField()
+    {
+        jp_InfoUsuario.clearField();
+    }
+    
+    /**
+     * Devuelve la información completa escrita en el frame
+     * @return
+     */
+    public String[] getInfo()
+    {
+        return jp_InfoUsuario.getInfo();
+    }
+    
+    /**
+     * Limpia todos los campos
+     */
+    public void clearFields()
+    {
+        jp_InfoUsuario.clearFields();
+    }
+    
+    /**
+     * Define la configuración para cuando no hay ningún botón disponible
+     */
+    public void nadaConf()
+    {
+        
+        jp_Botones.nadaConf();
+        agregarOpen = false;
+    }
+
+    /**
+     * Configura los botones para cuando no hay ningún estudiante encontrado
+     */
+    public void noEntidadConf()
+    {
+        jp_Botones.noEntidadConf();
+        agregarOpen = true;
+    }
+    
+    /**
+     * Configura los botones para cuando se ha encontrado un estudiante
+     */
+    public void siEntidadConf()
+    {
+        jp_Botones.siEntidadConf();
+        agregarOpen = false;
     }
 
     /**

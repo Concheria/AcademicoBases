@@ -697,4 +697,132 @@ public class ConexionBD
             return info;
         }
     }
+    
+    /*
+    * Métodos de Usuario
+    */
+    
+    /**
+     * Agrega el Usuario a la tabla
+     * @param user
+     * @param nombre
+     * @param pass
+     * @return
+     */
+    public boolean agregarUser(String user, String nombre, String pass)
+    {
+        Statement cmd = null;
+        boolean ejecuto;
+        
+        try
+        {
+            cmd = con.createStatement();
+            ejecuto = cmd.execute("INSERT INTO usuarios(usuario, nombre, contraseña) VALUES ('"+user+"','"+nombre+"','"+pass+"')");
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Agregar Fallido:\n"+e.getMessage());
+            e.printStackTrace();
+            
+            return false;
+        }
+    }
+    
+    /**
+     * Busca el Estudiante en la tabla
+     * @param user
+     * @return
+     */
+    public String[] buscarUser(String user)
+    {
+        System.out.println("ID Enviado: "+user);
+        
+        String[] info = new String[2];
+        ResultSet rs = null;
+        Statement cmd = null;
+        
+        try
+        {
+            cmd = con.createStatement();
+            rs = cmd.executeQuery("SELECT * FROM usuarios where usuario = '"+user+"'");
+            
+            while(rs.next())
+            {
+                String nombre = rs.getString("nombre");
+                String pass = rs.getString("contraseña");
+                
+                System.out.println("Usuario:\n"+
+                        "Usuario: "+user+
+                        "Nombre: "+nombre+
+                        "Contraseña: "+pass);
+                
+                info[0] = nombre;
+                info[1] = pass;
+            }
+            rs.close();
+            
+            return info;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Buscar Fallido:\n"+e.getMessage());
+            e.printStackTrace();
+            
+            return info;
+        }
+    }
+    
+    /**
+     * Envía los datos de un usuario para modificarlo
+     * @param user
+     * @param nombre
+     * @param pass
+     * @return
+     */
+    public boolean modificarUser(String user, String nombre, String pass)
+    {
+        Statement cmd = null;
+        boolean ejecuto;
+        
+        try
+        {
+            cmd = con.createStatement();
+            ejecuto = cmd.execute("UPDATE usuarios SET usuario='"+user+"',nombre='"+nombre+"',contraseña='"+pass+"' WHERE usuario='"+user+"'");
+            
+            System.out.println("Usuario Modificado:\n"+
+                    "Usuario: "+user+"\n"+
+                    "Nombre: "+nombre+"\n"+
+                    "Contraseña: "+pass+"\n");
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Modificar Fallido:\n"+e.getMessage());
+            e.printStackTrace();
+            
+            return false;
+        }
+    }
+    
+    public boolean eliminarUser(String user)
+    {
+        Statement cmd = null;
+        boolean ejecuto;
+        
+        try
+        {
+            cmd = con.createStatement();
+            ejecuto = cmd.execute("DELETE FROM usuarios WHERE usuario='"+user+"'");
+            
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Eliminar Fallido:\n"+e.getMessage());
+            e.printStackTrace();
+            
+            return false;
+        }
+    }
 }
