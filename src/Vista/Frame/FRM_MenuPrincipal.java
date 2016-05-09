@@ -10,6 +10,7 @@ package Vista.Frame;
 
 import Controlador.CNTRL_MenuPrincipal;
 import Modelo.Database.ConexionBD;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,6 +27,7 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame
         baseDatos = new ConexionBD();        
         controlador = new CNTRL_MenuPrincipal(this, baseDatos);
         initComponents();
+        inicioDeSistema();
         addController(controlador);
     }
     
@@ -43,6 +45,37 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame
         jmi_Matriculas.addActionListener(controlador);
         jmi_VerMatriculas.addActionListener(controlador);
         jmi_AdministrarUsuarios.addActionListener(controlador);
+    }
+    
+    public void inicioDeSistema()
+    {
+        if(chequearUsuarios())
+        {
+            controlador.iniciarLogin();
+            System.out.println("Hay usuarios registrados");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "No se ha registrado ningún Usuario.\nDebe registrar un usuario antes de continuar.");
+            controlador.usuarios();
+            System.out.println("No se ha registrado ningún usuario");   
+        }
+    }
+    
+    /**
+     * Chequea si existen usuarios
+     * @return
+     */
+    public boolean chequearUsuarios()
+    {
+        boolean hayUsuarios = false;
+        
+        if(baseDatos.verificarUsers() > 0)
+        {
+            hayUsuarios = true;
+        }
+        
+        return hayUsuarios;
     }
 
     /**
@@ -202,7 +235,6 @@ public class FRM_MenuPrincipal extends javax.swing.JFrame
                 FRM_MenuPrincipal menuPrincipal;
                 menuPrincipal = new FRM_MenuPrincipal();
                 menuPrincipal.setLocationRelativeTo(null);
-                menuPrincipal.setVisible(true);
             }
         });
     }

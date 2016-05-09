@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 public class CNTRL_Usuarios implements ActionListener{
     FRM_Usuarios frame;
     ConexionBD baseDatos;
+    CNTRL_MenuPrincipal controladorMenuPrincipal = null;
     
     public CNTRL_Usuarios(FRM_Usuarios frame, ConexionBD baseDatos)
     {
@@ -77,7 +78,15 @@ public class CNTRL_Usuarios implements ActionListener{
             if(baseDatos.agregarUser(user, nombre, pass))
             {
                 System.out.println("Usuario Agregado Correctamente");
-                frameReset();
+                if(controladorMenuPrincipal != null)
+                {
+                    JOptionPane.showMessageDialog(null, "Usuario agregado correctamente.");
+                    controladorMenuPrincipal.iniciarLogin();
+                }
+                else
+                {
+                    frameReset();
+                }
             }
             else
             {
@@ -151,6 +160,11 @@ public class CNTRL_Usuarios implements ActionListener{
         {
             JOptionPane.showMessageDialog(null, "No se ha podido Eliminar el Usuario");
         }
+    }
+    
+    public void configuracionInicial(CNTRL_MenuPrincipal controladorMenuPrincipal)
+    {
+        this.controladorMenuPrincipal = controladorMenuPrincipal;
     }
     
     /**

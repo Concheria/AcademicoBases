@@ -8,6 +8,7 @@
  */
 package Vista.Frame.Administrar;
 
+import Controlador.CNTRL_MenuPrincipal;
 import Controlador.CNTRL_Usuarios;
 import Modelo.Database.ConexionBD;
 
@@ -28,6 +29,11 @@ public class FRM_Usuarios extends javax.swing.JFrame {
         initComponents();        
         addController(controlador);
         nadaConf();
+    }
+    
+    public void configuracionInicial(CNTRL_MenuPrincipal controladorMenuPrincipal)
+    {        
+        controlador.configuracionInicial(controladorMenuPrincipal);
     }
     
         /**
@@ -85,7 +91,6 @@ public class FRM_Usuarios extends javax.swing.JFrame {
      */
     public void nadaConf()
     {
-        
         jp_Botones.nadaConf();
         agregarOpen = false;
     }
@@ -120,7 +125,6 @@ public class FRM_Usuarios extends javax.swing.JFrame {
         jp_InfoUsuario = new Vista.Panel.Info.JP_InfoUsuario();
         jp_Botones = new Vista.Panel.Botones.JP_Botones();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

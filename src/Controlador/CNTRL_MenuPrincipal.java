@@ -16,9 +16,11 @@ import Vista.Frame.Administrar.FRM_Matriculas;
 import Vista.Frame.Administrar.FRM_Usuarios;
 import Vista.Frame.Chequear.FRM_VerCursos;
 import Vista.Frame.Chequear.FRM_VerEstudiantes;
+import Vista.Frame.FRM_Login;
 import Vista.Frame.FRM_MenuPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,6 +36,9 @@ public class CNTRL_MenuPrincipal implements ActionListener
     FRM_Matriculas matriculas;
     FRM_VerMatriculas verMatriculas;
     FRM_Usuarios usuarios;
+    FRM_Login login;
+    
+    ConexionBD baseDatos;
     
     /**
      * Crea el controlador del Menú Principal
@@ -41,6 +46,7 @@ public class CNTRL_MenuPrincipal implements ActionListener
      */
     public CNTRL_MenuPrincipal(FRM_MenuPrincipal frame, ConexionBD baseDatos)
     {
+        this.baseDatos = baseDatos;
         this.frame = frame;
         inicializarFrames(baseDatos);
     }
@@ -65,6 +71,8 @@ public class CNTRL_MenuPrincipal implements ActionListener
         verMatriculas.setLocationRelativeTo(null);
         usuarios = new FRM_Usuarios(baseDatos);
         usuarios.setLocationRelativeTo(null);
+        login = new FRM_Login(baseDatos, this);
+        login.setLocationRelativeTo(null);
     }
     
     @Override
@@ -118,9 +126,53 @@ public class CNTRL_MenuPrincipal implements ActionListener
             usuarios.setVisible(true);
         }
         
+        if(e.getActionCommand().equals("Ingresar"))
+        {
+            ingresar();
+        }
+        
         if(e.getActionCommand().equals("Salir"))
         {
             System.exit(0);
         }
+    }
+    
+    public void ingresar()
+    {
+        String userEscrito = login.getUser();
+        String passEscrito = login.getPass();
+                
+        if((userEscrito.equals("")) || (passEscrito.equals("")))
+        {
+            JOptionPane.showMessageDialog(null, "Debe llenar ambos campos");
+        }
+        else
+        {
+            String pass = baseDatos.getPass(userEscrito);
+
+            if(passEscrito.equals(pass))
+            {
+                login.setVisible(false);
+                frame.setVisible(true);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Revise su nombre de usuario o contraseña");
+            }
+        }
+    }
+    
+    public void usuarios()
+    {
+        frame.setVisible(false);
+        usuarios.configuracionInicial(this);
+        usuarios.setVisible(true);
+    }    
+        
+    public void iniciarLogin()
+    {
+        frame.setVisible(false);
+        usuarios.setVisible(false);
+        login.setVisible(true);
     }
 }

@@ -778,7 +778,7 @@ public class ConexionBD
      * @param user
      * @param nombre
      * @param pass
-     * @return
+     * @return si se modificó
      */
     public boolean modificarUser(String user, String nombre, String pass)
     {
@@ -805,6 +805,11 @@ public class ConexionBD
         }
     }
     
+    /**
+     * Elimina un usuario de la tabla
+     * @param user
+     * @return si se eliminó
+     */
     public boolean eliminarUser(String user)
     {
         Statement cmd = null;
@@ -823,6 +828,68 @@ public class ConexionBD
             e.printStackTrace();
             
             return false;
+        }
+    }
+    
+    /*
+    * Métodos de Login
+    */
+    
+    public int verificarUsers()
+    {
+        System.out.println("Verificando Usuarios");
+        
+        int usuarios = 0;
+        ResultSet rs = null;
+        Statement cmd = null;
+        
+        try
+        {
+            cmd = con.createStatement();
+            rs = cmd.executeQuery("SELECT * FROM usuarios");
+            
+            while(rs.next())
+            {
+                usuarios++;
+            }
+            rs.close();
+            
+            return usuarios;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Buscar Fallido:\n"+e.getMessage());
+            e.printStackTrace();
+            
+            return -1;
+        }
+    }
+    
+    public String getPass(String user)
+    {
+        ResultSet rs = null;
+        Statement cmd = null;
+        String pass = "";
+        
+        try
+        {
+            cmd = con.createStatement();
+            rs = cmd.executeQuery("SELECT * FROM usuarios where usuario='"+user+"'");
+            
+            while(rs.next())
+            {
+                pass = rs.getString("contraseña");
+            }
+            rs.close();
+            
+            return pass;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Encontrar contraseña fallido:\n"+e.getMessage());
+            e.printStackTrace();
+            
+            return pass;
         }
     }
 }
